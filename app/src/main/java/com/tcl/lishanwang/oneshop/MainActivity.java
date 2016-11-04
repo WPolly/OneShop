@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.tcl.lishanwang.oneshop.adapter.MainContentViewPagerAdapter;
 import com.tcl.lishanwang.oneshop.utils.UIUtils;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         mVpMainContent = (ViewPager) findViewById(R.id.vp_content);
         resizeBottomIcons();
         mRgBottomNavigation.setOnCheckedChangeListener(mOnCheckedChangeListener);
+        mVpMainContent.setAdapter(new MainContentViewPagerAdapter(getSupportFragmentManager()));
     }
 
     private void resizeBottomIcons() {
