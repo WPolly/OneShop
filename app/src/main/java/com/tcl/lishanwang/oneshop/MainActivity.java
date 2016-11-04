@@ -29,15 +29,14 @@ public class MainActivity extends AppCompatActivity {
                 {R.drawable.selector_general_ic_home, R.drawable.selector_general_ic_category, R.drawable.selector_general_ic_discovery, R.drawable.selector_general_ic_service};
 
         int childCount = mRgBottomNavigation.getChildCount();
-        for(int i=0;i<childCount;i++){
-            RadioButton rb=(RadioButton) mRgBottomNavigation.getChildAt(i);
-            if(i==0){
-                rb.setChecked(true);
-            }
-            int bound= UIUtils.dip2Px((int) UIUtils.getDimension(R.dimen.bottom_navigation_icon_width));
-            Drawable d=getResources().getDrawable(bottomIcons[i]);
-            d.setBounds(0, 0,bound, bound);
-            rb.setCompoundDrawables(null,d , null, null);
+        for (int i = 0; i < childCount; i++) {
+            RadioButton rb = (RadioButton) mRgBottomNavigation.getChildAt(i);
+            if (i == 0) rb.setChecked(true);
+
+            int bound = UIUtils.dip2Px((int) UIUtils.getDimension(R.dimen.bottom_navigation_icon_width));
+            Drawable d = getResources().getDrawable(bottomIcons[i]);
+            d.setBounds(0, 0, bound, bound);
+            rb.setCompoundDrawables(null, d, null, null);
         }
     }
 
