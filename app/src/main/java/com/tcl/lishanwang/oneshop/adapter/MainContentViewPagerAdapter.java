@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.tcl.lishanwang.oneshop.fragment.HomeFragment;
+import com.tcl.lishanwang.oneshop.fragment.ServiceFragment;
 
 /**
  * Created by lishan on 2016/11/4.
@@ -19,6 +20,14 @@ public class MainContentViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        switch (position) {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 3:
+                return new ServiceFragment();
+        }
         return new HomeFragment();
     }
 

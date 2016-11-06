@@ -4,4 +4,12 @@
     <string name="category">Category</string>
     <string name="discovery">Discovery</string>
     <string name="service">Service</string>
+    <string name="to_pay">To Pay</string>
+    <string name="to_receive">To Receive</string>
+    <string name="to_comment">To Comment</string>
+    <string name="returns">Returns</string>
+    <string name="favorite">Favorite</string>
+    <string name="coupons">Coupons</string>
+    <string name="other">Others</string>
+    <string name="all_orders">All Orders</string>
 </resources>

@@ -31,11 +31,13 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <android.support.v4.view.ViewPager
+    <com.tcl.lishanwang.oneshop.view.NoScrollViewPager
         android:id="@+id/vp_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10" />
+
+    <include layout="@layout/divide_line_view"/>
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -51,19 +53,19 @@
             android:text="@string/home" />
 
         <RadioButton
-            android:id="@+id/rb_news"
+            android:id="@+id/rb_category"
             style="@style/BottomTagStyle"
             android:drawableTop="@drawable/selector_general_ic_category"
             android:text="@string/category" />
 
         <RadioButton
-            android:id="@+id/rb_service"
+            android:id="@+id/rb_discover"
             style="@style/BottomTagStyle"
             android:drawableTop="@drawable/selector_general_ic_discovery"
             android:text="@string/discovery" />
 
         <RadioButton
-            android:id="@+id/rb_gov"
+            android:id="@+id/rb_service"
             style="@style/BottomTagStyle"
             android:drawableTop="@drawable/selector_general_ic_service"
             android:text="@string/service" />

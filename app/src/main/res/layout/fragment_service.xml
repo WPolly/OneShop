@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp"
+            android:paddingStart="16dp"
+            android:paddingBottom="20dp"
+            android:background="@android:color/white"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@mipmap/avatar_default"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:layout_marginStart="16dp"
+                android:text="Soopim@tcl.com"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:src="@mipmap/general_ic_next"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/ServiceItem">
+
+            <TextView
+                android:text="@string/all_orders"
+                android:drawableEnd="@mipmap/general_ic_next"
+                style="@style/ServiceMenuTitleText"/>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    style="@style/ServiceOrdersMenu">
+                    <ImageView
+                        android:src="@mipmap/service_ic_pay"
+                        style="@style/ServiceOrdersMenuIcon"/>
+                    <TextView
+                        android:text="@string/to_pay"
+                        style="@style/ServiceOrdersMenuText"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/ServiceOrdersMenu">
+
+                    <ImageView
+                        android:src="@mipmap/service_ic_receive"
+                        style="@style/ServiceOrdersMenuIcon"
+                        android:id="@+id/imageView"/>
+
+                    <TextView
+                        android:text="@string/to_receive"
+                        style="@style/ServiceOrdersMenuText"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/ServiceOrdersMenu">
+                    <ImageView
+                        android:src="@mipmap/service_ic_comments"
+                        style="@style/ServiceOrdersMenuIcon"/>
+                    <TextView
+                        android:text="@string/to_comment"
+                        style="@style/ServiceOrdersMenuText"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/ServiceOrdersMenu">
+                    <ImageView
+                        android:src="@mipmap/service_ic_returns"
+                        style="@style/ServiceOrdersMenuIcon"/>
+                    <TextView
+                        android:text="@string/returns"
+                        style="@style/ServiceOrdersMenuText"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/ServiceItem">
+
+            <TextView
+                style="@style/ServiceMenuTitleText"
+                android:text="My"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <LinearLayout
+                    style="@style/ServiceOrdersMenu">
+                    <ImageView
+                        android:src="@mipmap/service_my_ic_favorite"
+                        style="@style/ServiceMyMenuIcon"/>
+                    <TextView
+                        android:text="@string/favorite"
+                        style="@style/ServiceOrdersMenuText"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/ServiceOrdersMenu">
+                    <ImageView
+                        android:src="@mipmap/service_my_ic_coupons"
+                        style="@style/ServiceMyMenuIcon"/>
+                    <TextView
+                        android:text="@string/coupons"
+                        style="@style/ServiceOrdersMenuText"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/ServiceOrdersMenu">
+                    <ImageView
+                        android:src="@mipmap/service_my_ic_other"
+                        style="@style/ServiceMyMenuIcon"/>
+                    <TextView
+                        android:text="@string/other"
+                        style="@style/ServiceOrdersMenuText"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/ServiceOrdersMenu"
+                    android:visibility="invisible">
+                    <ImageView
+                        android:src="@mipmap/service_ic_pay"
+                        style="@style/ServiceOrdersMenuIcon"/>
+                    <TextView
+                        android:text="@string/to_pay"
+                        style="@style/ServiceOrdersMenuText"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        
+    </LinearLayout>
+</ScrollView>
