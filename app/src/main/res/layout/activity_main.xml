@@ -19,7 +19,7 @@
                 android:layout_weight="1"
                 android:padding="8dp"
                 android:background="@drawable/bg_home_search"
-                android:hint="Search"/>
+                android:hint="@string/toolbar_hint_search"/>
 
             <ImageView
                 android:layout_width="25dp"

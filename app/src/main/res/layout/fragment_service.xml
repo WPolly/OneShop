@@ -7,44 +7,44 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="20dp"
-            android:paddingStart="16dp"
-            android:paddingBottom="20dp"
             android:background="@android:color/white"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:paddingTop="20dp">
+
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@mipmap/avatar_default"/>
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:layout_weight="1"
                 android:layout_marginStart="16dp"
-                android:text="Soopim@tcl.com"
+                android:layout_weight="1"
                 android:gravity="center_vertical"
+                android:text="Soopim@tcl.com"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:src="@mipmap/general_ic_next"/>
+
+            <include layout="@layout/iv_icon_next"/>
         </LinearLayout>
 
         <LinearLayout
             style="@style/ServiceItem">
 
             <TextView
-                android:text="@string/all_orders"
+                style="@style/ServiceMenuTitleText"
                 android:drawableEnd="@mipmap/general_ic_next"
-                style="@style/ServiceMenuTitleText"/>
-            
+                android:text="@string/all_orders"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -52,45 +52,51 @@
 
                 <LinearLayout
                     style="@style/ServiceOrdersMenu">
-                    <ImageView
-                        android:src="@mipmap/service_ic_pay"
-                        style="@style/ServiceOrdersMenuIcon"/>
-                    <TextView
-                        android:text="@string/to_pay"
-                        style="@style/ServiceOrdersMenuText"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    style="@style/ServiceOrdersMenu">
 
                     <ImageView
-                        android:src="@mipmap/service_ic_receive"
                         style="@style/ServiceOrdersMenuIcon"
-                        android:id="@+id/imageView"/>
+                        android:src="@mipmap/service_ic_pay"/>
 
                     <TextView
-                        android:text="@string/to_receive"
-                        style="@style/ServiceOrdersMenuText"/>
+                        style="@style/ServiceOrdersMenuText"
+                        android:text="@string/to_pay"/>
                 </LinearLayout>
 
                 <LinearLayout
                     style="@style/ServiceOrdersMenu">
+
                     <ImageView
-                        android:src="@mipmap/service_ic_comments"
-                        style="@style/ServiceOrdersMenuIcon"/>
+                        android:id="@+id/imageView"
+                        style="@style/ServiceOrdersMenuIcon"
+                        android:src="@mipmap/service_ic_receive"/>
+
                     <TextView
-                        android:text="@string/to_comment"
-                        style="@style/ServiceOrdersMenuText"/>
+                        style="@style/ServiceOrdersMenuText"
+                        android:text="@string/to_receive"/>
                 </LinearLayout>
 
                 <LinearLayout
                     style="@style/ServiceOrdersMenu">
+
                     <ImageView
-                        android:src="@mipmap/service_ic_returns"
-                        style="@style/ServiceOrdersMenuIcon"/>
+                        style="@style/ServiceOrdersMenuIcon"
+                        android:src="@mipmap/service_ic_comments"/>
+
                     <TextView
-                        android:text="@string/returns"
-                        style="@style/ServiceOrdersMenuText"/>
+                        style="@style/ServiceOrdersMenuText"
+                        android:text="@string/to_comment"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/ServiceOrdersMenu">
+
+                    <ImageView
+                        style="@style/ServiceOrdersMenuIcon"
+                        android:src="@mipmap/service_ic_returns"/>
+
+                    <TextView
+                        style="@style/ServiceOrdersMenuText"
+                        android:text="@string/returns"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -108,49 +114,113 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <LinearLayout
                     style="@style/ServiceOrdersMenu">
+
                     <ImageView
-                        android:src="@mipmap/service_my_ic_favorite"
-                        style="@style/ServiceMyMenuIcon"/>
+                        style="@style/ServiceMyMenuIcon"
+                        android:src="@mipmap/service_my_ic_favorite"/>
+
                     <TextView
-                        android:text="@string/favorite"
-                        style="@style/ServiceOrdersMenuText"/>
+                        style="@style/ServiceOrdersMenuText"
+                        android:text="@string/favorite"/>
                 </LinearLayout>
 
                 <LinearLayout
                     style="@style/ServiceOrdersMenu">
+
                     <ImageView
-                        android:src="@mipmap/service_my_ic_coupons"
-                        style="@style/ServiceMyMenuIcon"/>
+                        style="@style/ServiceMyMenuIcon"
+                        android:src="@mipmap/service_my_ic_coupons"/>
+
                     <TextView
-                        android:text="@string/coupons"
-                        style="@style/ServiceOrdersMenuText"/>
+                        style="@style/ServiceOrdersMenuText"
+                        android:text="@string/coupons"/>
                 </LinearLayout>
 
                 <LinearLayout
                     style="@style/ServiceOrdersMenu">
+
                     <ImageView
-                        android:src="@mipmap/service_my_ic_other"
-                        style="@style/ServiceMyMenuIcon"/>
+                        style="@style/ServiceMyMenuIcon"
+                        android:src="@mipmap/service_my_ic_other"/>
+
                     <TextView
-                        android:text="@string/other"
-                        style="@style/ServiceOrdersMenuText"/>
+                        style="@style/ServiceOrdersMenuText"
+                        android:text="@string/other"/>
                 </LinearLayout>
 
                 <LinearLayout
                     style="@style/ServiceOrdersMenu"
                     android:visibility="invisible">
+
                     <ImageView
-                        android:src="@mipmap/service_ic_pay"
-                        style="@style/ServiceOrdersMenuIcon"/>
+                        style="@style/ServiceOrdersMenuIcon"
+                        android:src="@mipmap/service_ic_pay"/>
+
                     <TextView
-                        android:text="@string/to_pay"
-                        style="@style/ServiceOrdersMenuText"/>
+                        style="@style/ServiceOrdersMenuText"
+                        android:text="@string/to_pay"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
-        
+        <LinearLayout
+            style="@style/ServiceSimpleItem"
+            android:layout_marginTop="12dp">
+
+            <ImageView
+                android:src="@mipmap/service_ic_service_site"
+                style="@style/ServiceSimpleItemIcon"/>
+
+            <TextView
+                style="@style/ServiceSimpleItemTv"
+                android:text="@string/service_site"/>
+
+            <include layout="@layout/iv_icon_next"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/ServiceSimpleItem">
+
+            <ImageView
+                android:src="@mipmap/service_ic_question"
+                style="@style/ServiceSimpleItemIcon"/>
+
+            <TextView
+                style="@style/ServiceSimpleItemTv"
+                android:text="@string/usual_question"/>
+
+            <include layout="@layout/iv_icon_next"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/ServiceSimpleItem">
+
+            <ImageView
+                android:src="@mipmap/service_ic_contact"
+                style="@style/ServiceSimpleItemIcon"/>
+
+            <TextView
+                style="@style/ServiceSimpleItemTv"
+                android:text="@string/contact_us"/>
+
+            <include layout="@layout/iv_icon_next"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/ServiceSimpleItem">
+
+            <ImageView
+                android:src="@mipmap/service_ic_feedback"
+                style="@style/ServiceSimpleItemIcon"/>
+
+            <TextView
+                style="@style/ServiceSimpleItemTv"
+                android:text="@string/feedback"/>
+
+            <include layout="@layout/iv_icon_next"/>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>
