@@ -19,7 +19,13 @@
                 android:layout_weight="1"
                 android:padding="8dp"
                 android:background="@drawable/bg_home_search"
-                android:hint="@string/toolbar_hint_search"/>
+                android:text="@string/toolbar_hint_search"
+                android:textColor="#999999"
+                android:textSize="18sp"
+                android:drawableStart="@mipmap/general_ic_seach"
+                android:gravity="center_vertical"
+                android:drawablePadding="8dp"
+                android:paddingStart="18dp"/>
 
             <ImageView
                 android:layout_width="25dp"
