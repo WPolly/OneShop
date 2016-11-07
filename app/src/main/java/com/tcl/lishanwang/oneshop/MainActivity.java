@@ -4,9 +4,10 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.tcl.lishanwang.oneshop.adapter.MainContentViewPagerAdapter;
 import com.tcl.lishanwang.oneshop.utils.UIUtils;
@@ -15,12 +16,15 @@ public class MainActivity extends AppCompatActivity {
 
     private RadioGroup mRgBottomNavigation;
     private ViewPager mVpMainContent;
-
+    private LinearLayout mllToolbarSearch;
+    private LinearLayout mllToolbarService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mllToolbarSearch = ((LinearLayout) findViewById(R.id.ll_toolbar_search));
+        mllToolbarService = ((LinearLayout) findViewById(R.id.ll_toolbar_service));
         mRgBottomNavigation = (RadioGroup) findViewById(R.id.rg_bottom_tags);
         mVpMainContent = (ViewPager) findViewById(R.id.vp_content);
         resizeBottomIcons();
@@ -47,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup.OnCheckedChangeListener mOnCheckedChangeListener = new RadioGroup.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+            mllToolbarSearch.setVisibility(View.VISIBLE);
+            mllToolbarService.setVisibility(View.GONE);
+
             switch (checkedId) {
                 case R.id.rb_home:
                     mVpMainContent.setCurrentItem(0, false);
@@ -59,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.rb_service:
                     mVpMainContent.setCurrentItem(3, false);
+                    mllToolbarSearch.setVisibility(View.GONE);
+                    mllToolbarService.setVisibility(View.VISIBLE);
                     break;
             }
         }
