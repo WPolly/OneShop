@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.tcl.lishanwang.oneshop.fragment.CategoryFragment;
 import com.tcl.lishanwang.oneshop.fragment.DiscoveryFragment;
 import com.tcl.lishanwang.oneshop.fragment.HomeFragment;
 import com.tcl.lishanwang.oneshop.fragment.ServiceFragment;
@@ -25,7 +26,7 @@ public class MainContentViewPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 break;
             case 1:
-                break;
+                return new CategoryFragment();
             case 2:
                 return new DiscoveryFragment();
             case 3:
