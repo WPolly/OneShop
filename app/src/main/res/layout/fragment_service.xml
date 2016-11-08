@@ -180,7 +180,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_sevice_site"
+            android:id="@+id/ll_service_site"
             style="@style/ServiceSimpleItem"
             android:layout_marginTop="12dp">
 

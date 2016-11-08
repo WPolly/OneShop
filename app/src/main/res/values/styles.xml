@@ -33,7 +33,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
         <item name="android:orientation">vertical</item>
-        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingBottom">12dp</item>
         <item name="android:paddingTop">12dp</item>
     </style>
 
@@ -52,14 +52,17 @@
     <style name="ServiceOrdersMenuText">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="ServiceMenuTitleText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:padding">16dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:paddingEnd">15dp</item>
     </style>
 
     <style name="ServiceItem">
@@ -75,7 +78,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:padding">16dp</item>
+        <item name="android:padding">@dimen/activity_horizontal_margin</item>
         <item name="android:layout_marginBottom">1dp</item>
         <item name="android:background">@android:color/white</item>
     </style>
@@ -84,7 +87,7 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:layout_marginStart">10dp</item>
     </style>
 
@@ -124,7 +127,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:layout_marginEnd">14dp</item>
+        <item name="android:layout_marginEnd">@dimen/activity_horizontal_margin</item>
     </style>
 
 </resources>

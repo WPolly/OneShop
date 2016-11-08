@@ -48,24 +48,14 @@ public class ServiceFragment extends Fragment {
     LinearLayout mLlCoupons;
     @BindView(R.id.ll_others)
     LinearLayout mLlOthers;
-    @BindView(R.id.ll_sevice_site)
-    LinearLayout mLlSeviceSite;
+    @BindView(R.id.ll_service_site)
+    LinearLayout mLlServiceSite;
     @BindView(R.id.ll_usual_question)
     LinearLayout mLlUsualQuestion;
     @BindView(R.id.ll_contact_us)
     LinearLayout mLlContactUs;
     @BindView(R.id.ll_feedback)
     LinearLayout mLlFeedback;
-
-    public static ServiceFragment newInstance(int someInt) {
-        ServiceFragment myFragment = new ServiceFragment();
-
-        Bundle args = new Bundle();
-        args.putInt("someInt", someInt);
-        myFragment.setArguments(args);
-
-        return myFragment;
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -85,7 +75,7 @@ public class ServiceFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
     }
 
-    @OnClick({R.id.civ_user_profile, R.id.ll_user_profile_container, R.id.tv_all_orders, R.id.ll_to_pay, R.id.imageView, R.id.ll_to_receive, R.id.ll_to_comment, R.id.ll_returns, R.id.ll_favorite, R.id.ll_coupons, R.id.ll_others, R.id.ll_sevice_site, R.id.ll_usual_question, R.id.ll_contact_us, R.id.ll_feedback})
+    @OnClick({R.id.civ_user_profile, R.id.ll_user_profile_container, R.id.tv_all_orders, R.id.ll_to_pay, R.id.imageView, R.id.ll_to_receive, R.id.ll_to_comment, R.id.ll_returns, R.id.ll_favorite, R.id.ll_coupons, R.id.ll_others, R.id.ll_service_site, R.id.ll_usual_question, R.id.ll_contact_us, R.id.ll_feedback})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.civ_user_profile:
@@ -112,7 +102,7 @@ public class ServiceFragment extends Fragment {
                 break;
             case R.id.ll_others:
                 break;
-            case R.id.ll_sevice_site:
+            case R.id.ll_service_site:
                 break;
             case R.id.ll_usual_question:
                 break;
