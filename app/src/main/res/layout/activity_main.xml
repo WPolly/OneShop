@@ -17,7 +17,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="6dp"
-                android:background="@drawable/bg_home_search"
+                android:background="@drawable/shape_bg_home_search"
                 android:text="@string/toolbar_hint_search"
                 android:textColor="#999999"
                 android:textSize="18sp"
