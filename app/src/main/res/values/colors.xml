@@ -2,9 +2,9 @@
 <resources>
     <color name="colorPrimary">#203043</color>
     <color name="colorPrimaryDark">#1c2837</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#35B0ff</color>
     <color name="colorBackground">#F5F5F5</color>
     <color name="bg_bottom_navigation">#ffffff</color>
-    <color name="bottom_btn_selected">#3580ff</color>
+    <color name="bottom_btn_selected">#35B0ff</color>
     <color name="bottom_btn_normal">#999999</color>
 </resources>

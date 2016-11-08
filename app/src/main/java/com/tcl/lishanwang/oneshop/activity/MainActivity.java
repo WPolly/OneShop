@@ -1,4 +1,4 @@
-package com.tcl.lishanwang.oneshop;
+package com.tcl.lishanwang.oneshop.activity;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.tcl.lishanwang.oneshop.R;
 import com.tcl.lishanwang.oneshop.adapter.MainContentViewPagerAdapter;
 import com.tcl.lishanwang.oneshop.utils.UIUtils;
 
