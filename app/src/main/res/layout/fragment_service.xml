@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -19,10 +20,12 @@
             android:paddingStart="16dp"
             android:paddingTop="20dp">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@mipmap/avatar_default"/>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@mipmap/avatar_default"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/colorBackground"/>
 
             <TextView
                 android:layout_width="0dp"
