@@ -10,6 +10,7 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/ll_user_profile_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
@@ -21,6 +22,7 @@
             android:paddingTop="20dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_user_profile"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:src="@mipmap/avatar_default"
@@ -44,6 +46,7 @@
             style="@style/ServiceItem">
 
             <TextView
+                android:id="@+id/tv_all_orders"
                 style="@style/ServiceMenuTitleText"
                 android:drawableEnd="@mipmap/general_ic_next"
                 android:text="@string/all_orders"/>
@@ -54,6 +57,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/ll_to_pay"
                     style="@style/ServiceOrdersMenu">
 
                     <ImageView
@@ -66,6 +70,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_to_receive"
                     style="@style/ServiceOrdersMenu">
 
                     <ImageView
@@ -79,6 +84,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_to_comment"
                     style="@style/ServiceOrdersMenu">
 
                     <ImageView
@@ -91,6 +97,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_returns"
                     style="@style/ServiceOrdersMenu">
 
                     <ImageView
@@ -119,6 +126,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/ll_favorite"
                     style="@style/ServiceOrdersMenu">
 
                     <ImageView
@@ -131,6 +139,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_coupons"
                     style="@style/ServiceOrdersMenu">
 
                     <ImageView
@@ -143,6 +152,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_others"
                     style="@style/ServiceOrdersMenu">
 
                     <ImageView
@@ -170,6 +180,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_sevice_site"
             style="@style/ServiceSimpleItem"
             android:layout_marginTop="12dp">
 
@@ -185,6 +196,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_usual_question"
             style="@style/ServiceSimpleItem">
 
             <ImageView
@@ -199,6 +211,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_contact_us"
             style="@style/ServiceSimpleItem">
 
             <ImageView
@@ -213,6 +226,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_feedback"
             style="@style/ServiceSimpleItem">
 
             <ImageView
