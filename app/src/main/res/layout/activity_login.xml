@@ -29,10 +29,9 @@
                 android:id="@+id/tv_sign_in"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:clickable="true"
                 android:text="@string/sign_in"
                 android:textSize="14sp"
-                android:textColor="@drawable/selector_color_toolbar_text"/>
+                android:textColor="@android:color/white"/>
         </LinearLayout>
     </android.support.v7.widget.Toolbar>
 
@@ -55,11 +54,15 @@
             android:background="@null"
             android:inputType="text"
             android:hint="@string/account"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:textColor="@color/colorGray"/>
 
     </LinearLayout>
 
-    <include layout="@layout/divide_line_view"/>
+    <View
+        android:layout_width="@dimen/activity_horizontal_margin"
+        android:layout_height="1dp"
+        android:background="@color/colorWhite"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -81,7 +84,8 @@
             android:background="@null"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:textColor="@color/colorGray"/>
 
         <CheckBox
             android:id="@+id/cb_password_visibility"
@@ -119,7 +123,7 @@
         <View
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:background="#33333333"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:layout_marginEnd="@dimen/activity_horizontal_margin"/>
@@ -133,7 +137,7 @@
         <View
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:background="#33333333"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:layout_marginEnd="@dimen/activity_horizontal_margin"/>
