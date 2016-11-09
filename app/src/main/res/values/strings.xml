@@ -17,4 +17,12 @@
     <string name="contact_us">Contact us</string>
     <string name="feedback">Feedback</string>
     <string name="toolbar_hint_search">Search</string>
+    <string name="login">Login</string>
+    <string name="sign_in">Sign In</string>
+    <string name="account">Account</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log In</string>
+    <string name="you_can_log_in_with">You Can Log In With</string>
+    <string name="twitter">Twitter</string>
+    <string name="facebook">Facebook</string>
 </resources>

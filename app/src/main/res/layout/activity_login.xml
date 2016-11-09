@@ -17,17 +17,19 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/iv_toolbar_back"
                 style="@style/ToolbarImageView"
                 android:src="@drawable/selector_toolbar_back"/>
 
             <TextView
                 style="@style/ToolbarMiddleTextView"
-                android:text="Login"/>
+                android:text="@string/login"/>
 
             <TextView
+                android:id="@+id/tv_sign_in"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Sign In"
+                android:text="@string/sign_in"
                 android:textSize="14sp"
                 android:textColor="@android:color/white"/>
         </LinearLayout>
@@ -42,15 +44,16 @@
         <TextView
             android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:text="Account"
+            android:text="@string/account"
             android:textSize="16sp"/>
 
         <EditText
+            android:id="@+id/et_accout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
             android:inputType="text"
-            android:hint="Account"
+            android:hint="@string/account"
             android:textSize="16sp"/>
 
     </LinearLayout>
@@ -66,19 +69,21 @@
         <TextView
             android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:text="Password"
+            android:text="@string/password"
             android:textSize="16sp"/>
 
         <EditText
+            android:id="@+id/et_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@null"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:textSize="16sp"/>
 
         <CheckBox
+            android:id="@+id/cb_password_visibility"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:background="@drawable/selector_password_visibility"
@@ -86,9 +91,10 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Log In"
+        android:text="@string/log_in"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="16sp"
@@ -96,5 +102,93 @@
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
         android:layout_marginTop="20dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="24dp"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="1dp"
+            android:background="#33333333"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/you_can_log_in_with"
+            android:textColor="@color/colorGray"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="1dp"
+            android:background="#33333333"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="20dp">
+        <LinearLayout
+            android:id="@+id/ll_twitter_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="60dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/login_ic_twitter"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#59ADEC"
+                android:text="@string/twitter"
+                android:textSize="12sp"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_fb_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/login_ic_facebook"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#3A5899"
+                android:text="@string/facebook"
+                android:textSize="12sp"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
