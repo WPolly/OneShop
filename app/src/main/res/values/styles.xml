@@ -19,11 +19,11 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:button">@null</item>
-        <item name="android:padding">8dp</item>
         <item name="android:textColor">@drawable/selector_text_bottom_tag</item>
-        <item name="android:drawablePadding">1dp</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:drawablePadding">3dp</item>
+        <item name="android:textSize">9sp</item>
         <item name="android:layout_weight">1</item>
+        <item name="android:layout_gravity">center</item>
         <item name="android:gravity">center</item>
     </style>
 
@@ -33,20 +33,19 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
         <item name="android:orientation">vertical</item>
-        <item name="android:paddingBottom">12dp</item>
-        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">15dp</item>
     </style>
 
     <style name="ServiceOrdersMenuIcon">
         <item name="android:layout_width">30dp</item>
         <item name="android:layout_height">30dp</item>
-        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
     </style>
 
-    <style name="ServiceMyMenuIcon">
+    <style name="HomeHorizontalMenuIcon">
         <item name="android:layout_width">40dp</item>
         <item name="android:layout_height">40dp</item>
-        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
     </style>
 
     <style name="ServiceOrdersMenuText">
@@ -57,10 +56,9 @@
 
     <style name="ServiceMenuTitleText">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:gravity">center_vertical</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:paddingBottom">6dp</item>
-        <item name="android:paddingTop">12dp</item>
         <item name="android:paddingStart">15dp</item>
         <item name="android:paddingEnd">15dp</item>
     </style>

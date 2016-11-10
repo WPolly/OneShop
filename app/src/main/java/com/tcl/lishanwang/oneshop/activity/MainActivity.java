@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             RadioButton rb = (RadioButton) mRgBottomNavigation.getChildAt(i);
             if (i == 0) rb.setChecked(true);
 
-            int bound = UIUtils.dip2Px(26);
+            int bound = UIUtils.dip2Px(20);
             Drawable d = getResources().getDrawable(bottomIcons[i]);
             d.setBounds(0, 0, bound, bound);
             rb.setCompoundDrawables(null, d, null, null);

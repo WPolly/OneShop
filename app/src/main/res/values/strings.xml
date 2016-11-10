@@ -25,4 +25,8 @@
     <string name="you_can_log_in_with">You Can Log In With</string>
     <string name="twitter">Twitter</string>
     <string name="facebook">Facebook</string>
+    <string name="sales_ranking">Sales ranking</string>
+    <string name="spacial_sales">Spacial sales</string>
+    <string name="accessories">Accessories</string>
+    <string name="get_coupon">Get coupon</string>
 </resources>
