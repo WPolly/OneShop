@@ -7,9 +7,12 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.tcl.lishanwang.oneshop.R;
 import com.tcl.lishanwang.oneshop.adapter.HomeLoopingImgViewPagerAdapter;
+import com.tcl.lishanwang.oneshop.utils.UIUtils;
 
 /**
  * Created by lishan on 2016/11/4.
@@ -18,6 +21,10 @@ import com.tcl.lishanwang.oneshop.adapter.HomeLoopingImgViewPagerAdapter;
 
 public class HomeFragment extends Fragment {
 
+    private int[] mImgIds =
+            {R.mipmap.discovery_hot_topic, R.mipmap.discovery_hot_activity, R.mipmap.discovery_sweepstakes, R.mipmap.discovery_physical_store};
+    private ViewPager mVpHomeLoopingImg;
+    private LinearLayout mLLHomeLoopIndicator;
 
     public static HomeFragment newInstance(int someInt) {
         HomeFragment myFragment = new HomeFragment();
@@ -38,13 +45,55 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        ViewPager vpHomeLoopingImg = (ViewPager) rootView.findViewById(R.id.vp_home_looping_img);
-        vpHomeLoopingImg.setAdapter(new HomeLoopingImgViewPagerAdapter());
+        mVpHomeLoopingImg = (ViewPager) rootView.findViewById(R.id.vp_home_looping_img);
+        mLLHomeLoopIndicator = (LinearLayout) rootView.findViewById(R.id.ll_home_loop_indicator);
         return rootView;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        mVpHomeLoopingImg.setAdapter(new HomeLoopingImgViewPagerAdapter(mImgIds));
+        refreshLoopIndicator(0);
+        mVpHomeLoopingImg.addOnPageChangeListener(mOnPageChangeListener);
     }
+
+    private void refreshLoopIndicator(int index) {
+        mLLHomeLoopIndicator.removeAllViews();
+        for (int i = 0; i < mImgIds.length; i++) {
+            ImageView ivDot;
+            LinearLayout.LayoutParams layoutParams;
+            if (i == index) {
+                ivDot = new ImageView(getContext());
+                layoutParams = new LinearLayout.LayoutParams(UIUtils.dip2Px(15), ViewGroup.LayoutParams.MATCH_PARENT);
+                layoutParams.rightMargin = 4;
+                ivDot.setLayoutParams(layoutParams);
+                ivDot.setBackgroundResource(R.drawable.home_dot_pre);
+            } else {
+                ivDot = new ImageView(getContext());
+                layoutParams = new LinearLayout.LayoutParams(UIUtils.dip2Px(7), ViewGroup.LayoutParams.MATCH_PARENT);
+                layoutParams.rightMargin = 4;
+                ivDot.setLayoutParams(layoutParams);
+                ivDot.setBackgroundResource(R.drawable.home_dot_nor);
+            }
+            mLLHomeLoopIndicator.addView(ivDot);
+        }
+    }
+
+    private ViewPager.OnPageChangeListener mOnPageChangeListener = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            refreshLoopIndicator(position);
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
+    };
 }

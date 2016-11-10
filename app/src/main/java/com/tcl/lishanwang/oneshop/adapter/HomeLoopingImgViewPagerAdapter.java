@@ -17,6 +17,10 @@ public class HomeLoopingImgViewPagerAdapter extends PagerAdapter {
     private int[] imgIds =
             {R.mipmap.discovery_hot_topic, R.mipmap.discovery_hot_activity, R.mipmap.discovery_sweepstakes, R.mipmap.discovery_physical_store};
 
+    public HomeLoopingImgViewPagerAdapter(int[] imgIds) {
+        this.imgIds = imgIds;
+    }
+
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         ImageView imageView = new ImageView(container.getContext());
