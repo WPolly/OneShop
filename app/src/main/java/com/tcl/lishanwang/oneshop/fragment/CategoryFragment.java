@@ -19,6 +19,8 @@ import com.tcl.lishanwang.oneshop.adapter.CategoryRightAdapter;
 
 public class CategoryFragment extends Fragment {
 
+    private ViewGroup mVgCategoryLeft;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,13 +32,24 @@ public class CategoryFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_category, container, false);
         RecyclerView rvCategoryRight = (RecyclerView) rootView.findViewById(R.id.rv_category_right);
         rvCategoryRight.setAdapter(new CategoryRightAdapter());
-        ViewGroup vgCategoryLeft = (ViewGroup) rootView.findViewById(R.id.rg_category_left);
-        ((RadioButton) vgCategoryLeft.getChildAt(0)).setChecked(true);
+        mVgCategoryLeft = (ViewGroup) rootView.findViewById(R.id.rg_category_left);
         return rootView;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        int checkedId = 0;
+        if (savedInstanceState != null) checkedId = savedInstanceState.getInt("checked_id", 0);
+        ((RadioButton) mVgCategoryLeft.getChildAt(checkedId)).setChecked(true);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        int childCount = mVgCategoryLeft.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            RadioButton childAt = (RadioButton) mVgCategoryLeft.getChildAt(i);
+            if (childAt.isChecked()) outState.putInt("checked_id", i);
+        }
     }
 }
