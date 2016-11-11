@@ -14,6 +14,7 @@ import com.tcl.lishanwang.oneshop.R;
 
 public class HomeLoopingImgViewPagerAdapter extends PagerAdapter {
 
+    private static final int TOTAL_PAGER_COUNT = 10000;
     private int[] imgIds =
             {R.mipmap.discovery_hot_topic, R.mipmap.discovery_hot_activity, R.mipmap.discovery_sweepstakes, R.mipmap.discovery_physical_store};
 
@@ -23,9 +24,10 @@ public class HomeLoopingImgViewPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
+        int fixedPosition = position % imgIds.length;
         ImageView imageView = new ImageView(container.getContext());
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setImageResource(imgIds[position]);
+        imageView.setImageResource(imgIds[fixedPosition]);
         container.addView(imageView);
         return imageView;
     }
@@ -37,7 +39,7 @@ public class HomeLoopingImgViewPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return imgIds.length;
+        return TOTAL_PAGER_COUNT;
     }
 
     @Override

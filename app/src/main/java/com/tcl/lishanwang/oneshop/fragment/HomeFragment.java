@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -25,6 +26,8 @@ public class HomeFragment extends Fragment {
             {R.mipmap.discovery_hot_topic, R.mipmap.discovery_hot_activity, R.mipmap.discovery_sweepstakes, R.mipmap.discovery_physical_store};
     private ViewPager mVpHomeLoopingImg;
     private LinearLayout mLLHomeLoopIndicator;
+    private HomeLoopingImgViewPagerAdapter mHomeLoopingImgViewPagerAdapter;
+    private AutoScrollTask mAutoScrollTask;
 
     public static HomeFragment newInstance(int someInt) {
         HomeFragment myFragment = new HomeFragment();
@@ -53,9 +56,20 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mVpHomeLoopingImg.setAdapter(new HomeLoopingImgViewPagerAdapter(mImgIds));
-        refreshLoopIndicator(0);
+        mHomeLoopingImgViewPagerAdapter = new HomeLoopingImgViewPagerAdapter(mImgIds);
+        mVpHomeLoopingImg.setAdapter(mHomeLoopingImgViewPagerAdapter);
         mVpHomeLoopingImg.addOnPageChangeListener(mOnPageChangeListener);
+        mVpHomeLoopingImg.setOnTouchListener(mVpOnTouchListener);
+        mVpHomeLoopingImg.setCurrentItem(determineCurrentPosition());
+        refreshLoopIndicator(0);
+        mAutoScrollTask = new AutoScrollTask();
+        mAutoScrollTask.startScroll();
+    }
+
+    private int determineCurrentPosition() {
+        int currentPosition = mHomeLoopingImgViewPagerAdapter.getCount() / 2;
+        while (currentPosition % mImgIds.length != 0) currentPosition++;
+        return currentPosition;
     }
 
     private void refreshLoopIndicator(int index) {
@@ -80,6 +94,29 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mAutoScrollTask.stopScroll();
+    }
+
+    private class AutoScrollTask implements Runnable {
+
+        void startScroll() {
+            UIUtils.postTaskDelay(this, 3000);
+        }
+
+        void stopScroll() {
+            UIUtils.removeTask(this);
+        }
+
+        @Override
+        public void run() {
+            mVpHomeLoopingImg.setCurrentItem(mVpHomeLoopingImg.getCurrentItem() + 1);
+            startScroll();
+        }
+    }
+
     private ViewPager.OnPageChangeListener mOnPageChangeListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -88,12 +125,30 @@ public class HomeFragment extends Fragment {
 
         @Override
         public void onPageSelected(int position) {
-            refreshLoopIndicator(position);
+            refreshLoopIndicator(position % mImgIds.length);
         }
 
         @Override
         public void onPageScrollStateChanged(int state) {
 
+        }
+    };
+
+    private View.OnTouchListener mVpOnTouchListener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            switch (motionEvent.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    mAutoScrollTask.stopScroll();
+                    break;
+                case MotionEvent.ACTION_UP:
+                    mAutoScrollTask.startScroll();
+                    break;
+                case MotionEvent.ACTION_CANCEL:
+                    mAutoScrollTask.startScroll();
+                    break;
+            }
+            return false;
         }
     };
 }
