@@ -17,26 +17,32 @@
             android:layout_height="wrap_content">
 
             <RadioButton
+                android:id="@+id/rb0"
                 style="@style/CategoryLeftMenuRadioButton"
                 android:text="Protective\naccessories"/>
 
             <RadioButton
+                android:id="@+id/rb1"
                 style="@style/CategoryLeftMenuRadioButton"
                 android:text="Audio"/>
 
             <RadioButton
+                android:id="@+id/rb2"
                 style="@style/CategoryLeftMenuRadioButton"
                 android:text="Power bank"/>
 
             <RadioButton
+                android:id="@+id/rb3"
                 style="@style/CategoryLeftMenuRadioButton"
                 android:text="Car\naccessories"/>
 
             <RadioButton
+                android:id="@+id/rb4"
                 style="@style/CategoryLeftMenuRadioButton"
                 android:text="Universal\naccessories"/>
 
             <RadioButton
+                android:id="@+id/rb5"
                 style="@style/CategoryLeftMenuRadioButton"
                 android:text="Wearables"/>
         </RadioGroup>
