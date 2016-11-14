@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:background="?attr/colorPrimary">
+    <LinearLayout
+        style="@style/ToolbarLinearLayoutContainer"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_toolbar_back"
+            style="@style/ToolbarImageView"
+            android:src="@drawable/selector_toolbar_back"/>
+
+        <TextView
+            android:id="@+id/tv_toolbar_middle"
+            style="@style/ToolbarMiddleTextView"/>
+
+        <ImageView
+            android:id="@+id/iv_toolbar_cart"
+            android:background="@drawable/selector_cart"
+            style="@style/ToolbarImageView"/>
+
+        <TextView
+            android:id="@+id/tv_sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:text="@string/sign_in"
+            android:textSize="14sp"
+            android:textColor="@drawable/selector_color_toolbar_text"/>
+    </LinearLayout>
+
+</android.support.v7.widget.Toolbar>
