@@ -36,11 +36,14 @@ public class GeneralToolbar extends Toolbar implements View.OnClickListener {
         inflate(context, R.layout.toolbar_general, this);
         findViewById(R.id.iv_toolbar_back).setOnClickListener(this);
         TextView tvMiddle = (TextView) findViewById(R.id.tv_toolbar_middle);
+        TextView tvRight = (TextView) findViewById(R.id.tv_sign_in);
         View cart = findViewById(R.id.iv_toolbar_cart);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.GeneralToolbar);
         boolean isRightImgShow = typedArray.getBoolean(R.styleable.GeneralToolbar_isRightImgShow, false);
         String tvTitle = typedArray.getString(R.styleable.GeneralToolbar_title);
+        cart.setOnClickListener(this);
         cart.setVisibility(isRightImgShow ? VISIBLE : GONE);
+        tvRight.setVisibility(isRightImgShow ? GONE : VISIBLE);
         tvMiddle.setText(tvTitle);
         typedArray.recycle();
     }
@@ -53,6 +56,7 @@ public class GeneralToolbar extends Toolbar implements View.OnClickListener {
                 break;
             case R.id.iv_toolbar_cart:
                 Toast.makeText(getContext(), "shopping cart", Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 }
