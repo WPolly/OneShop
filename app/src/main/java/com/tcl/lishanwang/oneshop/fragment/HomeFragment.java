@@ -80,13 +80,13 @@ public class HomeFragment extends Fragment {
             if (i == index) {
                 ivDot = new ImageView(getContext());
                 layoutParams = new LinearLayout.LayoutParams(UIUtils.dip2Px(15), ViewGroup.LayoutParams.MATCH_PARENT);
-                layoutParams.rightMargin = 4;
+                layoutParams.rightMargin = UIUtils.dip2Px(4);
                 ivDot.setLayoutParams(layoutParams);
                 ivDot.setBackgroundResource(R.drawable.home_dot_pre);
             } else {
                 ivDot = new ImageView(getContext());
                 layoutParams = new LinearLayout.LayoutParams(UIUtils.dip2Px(7), ViewGroup.LayoutParams.MATCH_PARENT);
-                layoutParams.rightMargin = 4;
+                layoutParams.rightMargin = UIUtils.dip2Px(4);
                 ivDot.setLayoutParams(layoutParams);
                 ivDot.setBackgroundResource(R.drawable.home_dot_nor);
             }

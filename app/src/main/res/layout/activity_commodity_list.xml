@@ -1,18 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:id="@+id/activity_commodity_list"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tcl="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.tcl.lishanwang.oneshop.activity.CommodityListActivity"
-    xmlns:tcl="http://schemas.android.com/apk/res-auto">
+    tools:context="com.tcl.lishanwang.oneshop.activity.CommodityListActivity">
 
     <com.tcl.lishanwang.oneshop.view.GeneralToolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tcl:title="Phone"
-        tcl:isRightImgShow="true"/>
+        tcl:isRightImgShow="true"
+        tcl:title="Phone"/>
+
+    <LinearLayout
+        android:id="@+id/ll_sort_filter_container"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:background="@color/colorWhite"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/activity_horizontal_margin">
+
+        <RadioGroup
+            android:id="@+id/rg_sort_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_recommend"
+                android:layout_marginEnd="20dp"
+                android:text="Recommend"
+                style="@style/SortFilterRadioButton"/>
+
+            <RadioButton
+                android:id="@+id/rb_new"
+                android:layout_marginEnd="20dp"
+                android:text="New"
+                style="@style/SortFilterRadioButton"/>
+
+            <RadioButton
+                android:id="@+id/rb_price_ranking"
+                android:layout_marginEnd="3dp"
+                android:text="Price ranking"
+                style="@style/SortFilterRadioButton"/>
+        </RadioGroup>
+
+        <ImageView
+            android:id="@+id/iv_price_ranking"
+            android:layout_width="6dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/product_screen_nprice_uncheck"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackground"/>
+
+        <ImageView
+            android:id="@+id/iv_filter"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:src="@drawable/product_btn_screen_nor"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackground"/>
+
+        <ImageView
+            android:id="@+id/iv_show_style"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:src="@drawable/product_btn_list"/>
+    </LinearLayout>
 
 </LinearLayout>
