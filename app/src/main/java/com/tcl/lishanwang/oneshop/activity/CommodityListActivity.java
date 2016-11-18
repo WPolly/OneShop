@@ -1,21 +1,26 @@
 package com.tcl.lishanwang.oneshop.activity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Build;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.tcl.lishanwang.oneshop.R;
+import com.tcl.lishanwang.oneshop.utils.UIUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,17 +40,24 @@ public class CommodityListActivity extends AppCompatActivity {
     ImageView mIvFilter;
     @BindView(R.id.iv_show_style)
     ImageView mIvShowStyle;
-    @BindView(R.id.ll_sort_filter_container)
-    LinearLayout mLlsortFilterContainer;
+    @BindView(R.id.rl_sort_filter_container)
+    RelativeLayout mRlsortFilterContainer;
     @BindView(R.id.rg_sort_filter)
     RadioGroup mRgSortFilter;
+    @BindView(R.id.ll_filter_drop_menu)
+    LinearLayout mLlFilterDropMenu;
+    @BindView(R.id.v_shadow_behind)
+    View mVShadowBehind;
     private static final int PRICE_RANKING_NONE = 0;
     private static final int PRICE_RANKING_ASCEND = 1;
     private static final int PRICE_RANKING_DESCEND = 2;
     private int mCurrentPriceRanking;
     private boolean mIsCurrentShowStyleGrid;
-    private PopupWindow mPopupWindow;
+    private boolean mIsDropMenuOpen;
     private SharedPreferences mSharedPref;
+    private ValueAnimator mDropMenuAnimator;
+    private int mOriginIvFilterHeight;
+    private int mOriginDropMenuHeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,16 +74,13 @@ public class CommodityListActivity extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rb_price_ranking:
-                if (mCurrentPriceRanking == PRICE_RANKING_ASCEND) {
-                    mCurrentPriceRanking = PRICE_RANKING_DESCEND;
-                    mIvPriceRanking.setImageResource(R.drawable.product_screen_nprice_low);
-                } else {
-                    mCurrentPriceRanking = PRICE_RANKING_ASCEND;
-                    mIvPriceRanking.setImageResource(R.drawable.product_screen_nprice_tall);
-                }
+                changePriceRankingOrder();
                 break;
             case R.id.iv_filter:
-                togglePopupWindow();
+                int tempHeight = mLlFilterDropMenu.getMeasuredHeight();
+                if (tempHeight != 0) mOriginDropMenuHeight = tempHeight;
+                initDropMenuAnimator();
+                toggleDropMenu();
                 break;
             case R.id.iv_show_style:
                 mIsCurrentShowStyleGrid = !mIsCurrentShowStyleGrid;
@@ -80,18 +89,45 @@ public class CommodityListActivity extends AppCompatActivity {
         }
     }
 
-    private void togglePopupWindow() {
-        if (mPopupWindow == null) {
-            View contentView = View.inflate(this, R.layout.popup_filter, null);
-            mPopupWindow = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        }
-        if (mPopupWindow.isShowing()) {
-            mIvFilter.setImageResource(R.drawable.product_btn_screen_nor);
-            mPopupWindow.dismiss();
+    private void toggleDropMenu() {
+        if (mIsDropMenuOpen) {
+            closeDropMenu();
         } else {
-            mIvFilter.setImageResource(R.drawable.product_btn_screen_pre);
-            mPopupWindow.showAsDropDown(mLlsortFilterContainer);
-            dimBehind(mPopupWindow);
+            openDropMenu();
+        }
+        mIsDropMenuOpen = !mIsDropMenuOpen;
+    }
+
+    private void openDropMenu() {
+        ViewGroup.LayoutParams ivFilterLp = mIvFilter.getLayoutParams();
+        mOriginIvFilterHeight = ivFilterLp.height;
+        ivFilterLp.height = mOriginIvFilterHeight + UIUtils.dip2Px(1);
+        mIvFilter.setImageResource(R.drawable.product_btn_screen_pre);
+        mDropMenuAnimator.removeListener(mAnimatorListenerAdapter);
+        mDropMenuAnimator.start();
+    }
+
+    private void closeDropMenu() {
+        mIvFilter.setImageResource(R.drawable.product_btn_screen_nor);
+        mDropMenuAnimator.addListener(mAnimatorListenerAdapter);
+        mDropMenuAnimator.reverse();
+    }
+
+    private void initDropMenuAnimator() {
+        mDropMenuAnimator = ValueAnimator.ofInt(0, mOriginDropMenuHeight);
+        mDropMenuAnimator.setDuration(200);
+        mDropMenuAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+        mDropMenuAnimator.addUpdateListener(mAnimatorUpdateListener);
+        mDropMenuAnimator.addListener(mAnimatorListenerAdapter);
+    }
+
+    private void changePriceRankingOrder() {
+        if (mCurrentPriceRanking == PRICE_RANKING_ASCEND) {
+            mCurrentPriceRanking = PRICE_RANKING_DESCEND;
+            mIvPriceRanking.setImageResource(R.drawable.product_screen_nprice_low);
+        } else {
+            mCurrentPriceRanking = PRICE_RANKING_ASCEND;
+            mIvPriceRanking.setImageResource(R.drawable.product_screen_nprice_tall);
         }
     }
 
@@ -100,39 +136,17 @@ public class CommodityListActivity extends AppCompatActivity {
         mSharedPref.edit().putBoolean("is_show_grid", mIsCurrentShowStyleGrid).apply();
     }
 
-    private void dimBehind(PopupWindow popupWindow) {
-        View container;
-        if (popupWindow.getBackground() == null) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                container = (View) popupWindow.getContentView().getParent();
-            } else {
-                container = popupWindow.getContentView();
-            }
-        } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                container = (View) popupWindow.getContentView().getParent().getParent();
-            } else {
-                container = (View) popupWindow.getContentView().getParent();
-            }
-        }
-        Context context = popupWindow.getContentView().getContext();
-        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        WindowManager.LayoutParams p = (WindowManager.LayoutParams) container.getLayoutParams();
-        p.flags |= WindowManager.LayoutParams.FLAG_DIM_BEHIND;
-        p.dimAmount = 0.3f;
-        wm.updateViewLayout(container, p);
-    }
-
     @Override
     public void onBackPressed() {
-        if (mPopupWindow != null && mPopupWindow.isShowing()) {
-            mIvFilter.setImageResource(R.drawable.product_btn_screen_nor);
-            mPopupWindow.dismiss();
+        if (mIsDropMenuOpen) {
+            closeDropMenu();
+            mIsDropMenuOpen = false;
         } else {
             super.onBackPressed();
         }
     }
 
+    //region:  listeners
     private RadioGroup.OnCheckedChangeListener mOnCheckedChangeListener = new RadioGroup.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
@@ -148,5 +162,30 @@ public class CommodityListActivity extends AppCompatActivity {
             }
         }
     };
-    ;
+
+    private AnimatorListenerAdapter mAnimatorListenerAdapter = new AnimatorListenerAdapter() {
+        @Override
+        public void onAnimationEnd(Animator animation) {
+            ViewGroup.LayoutParams ivFilterLp = mIvFilter.getLayoutParams();
+            ivFilterLp.height = mOriginIvFilterHeight;
+        }
+    };
+
+    private ValueAnimator.AnimatorUpdateListener mAnimatorUpdateListener = new ValueAnimator.AnimatorUpdateListener() {
+        @Override
+        public void onAnimationUpdate(ValueAnimator valueAnimator) {
+            mLlFilterDropMenu.setVisibility(View.VISIBLE);
+            int animatedValue = (int) valueAnimator.getAnimatedValue();
+            ViewGroup.LayoutParams llFilterDropMenuLp = mLlFilterDropMenu.getLayoutParams();
+            llFilterDropMenuLp.height = animatedValue;
+            mLlFilterDropMenu.requestLayout();
+
+            float fraction = animatedValue / 500f;
+            int startColor = Color.parseColor("#00000000");
+            int endColor = Color.parseColor("#55000000");
+            ArgbEvaluator argbEvaluator = new ArgbEvaluator();
+            int evaluateColor = (int) argbEvaluator.evaluate(fraction, startColor, endColor);
+            mVShadowBehind.setBackgroundColor(evaluateColor);
+        }
+    };
 }
