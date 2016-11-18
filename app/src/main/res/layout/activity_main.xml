@@ -28,7 +28,7 @@
 
             <ImageView
                 android:layout_marginStart="15dp"
-                android:background="@drawable/selector_cart"
+                android:background="@drawable/selector_toolbar_cart"
                 style="@style/ToolbarImageView"/>
         </LinearLayout>
 

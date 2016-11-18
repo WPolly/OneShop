@@ -9,6 +9,8 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -20,6 +22,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.tcl.lishanwang.oneshop.R;
+import com.tcl.lishanwang.oneshop.adapter.CommodityAdapter;
 import com.tcl.lishanwang.oneshop.utils.UIUtils;
 
 import butterknife.BindView;
@@ -48,6 +51,9 @@ public class CommodityListActivity extends AppCompatActivity {
     LinearLayout mLlFilterDropMenu;
     @BindView(R.id.v_shadow_behind)
     View mVShadowBehind;
+    @BindView(R.id.rv_commodity)
+    RecyclerView mRvCommodity;
+
     private static final int PRICE_RANKING_NONE = 0;
     private static final int PRICE_RANKING_ASCEND = 1;
     private static final int PRICE_RANKING_DESCEND = 2;
@@ -67,7 +73,10 @@ public class CommodityListActivity extends AppCompatActivity {
         mSharedPref = getPreferences(Context.MODE_PRIVATE); //https://developer.android.com/training/basics/data-storage/shared-preferences.html
         mIsCurrentShowStyleGrid = mSharedPref.getBoolean("is_show_grid", false);
         refreshShowStyle();
+        mRgSortFilter.check(R.id.rb_recommend);
         mRgSortFilter.setOnCheckedChangeListener(mOnCheckedChangeListener);
+        mRvCommodity.setLayoutManager(new LinearLayoutManager(this));
+        mRvCommodity.setAdapter(new CommodityAdapter());
     }
 
     @OnClick({R.id.rb_price_ranking, R.id.iv_filter, R.id.iv_show_style})
@@ -99,6 +108,7 @@ public class CommodityListActivity extends AppCompatActivity {
     }
 
     private void openDropMenu() {
+        mRvCommodity.setLayoutFrozen(true);
         ViewGroup.LayoutParams ivFilterLp = mIvFilter.getLayoutParams();
         mOriginIvFilterHeight = ivFilterLp.height;
         ivFilterLp.height = mOriginIvFilterHeight + UIUtils.dip2Px(1);
@@ -108,6 +118,7 @@ public class CommodityListActivity extends AppCompatActivity {
     }
 
     private void closeDropMenu() {
+        mRvCommodity.setLayoutFrozen(false);
         mIvFilter.setImageResource(R.drawable.product_btn_screen_nor);
         mDropMenuAnimator.addListener(mAnimatorListenerAdapter);
         mDropMenuAnimator.reverse();
@@ -182,7 +193,7 @@ public class CommodityListActivity extends AppCompatActivity {
 
             float fraction = animatedValue / 500f;
             int startColor = Color.parseColor("#00000000");
-            int endColor = Color.parseColor("#55000000");
+            int endColor = Color.parseColor("#66000000");
             ArgbEvaluator argbEvaluator = new ArgbEvaluator();
             int evaluateColor = (int) argbEvaluator.evaluate(fraction, startColor, endColor);
             mVShadowBehind.setBackgroundColor(evaluateColor);

@@ -18,7 +18,7 @@
 
         <ImageView
             android:id="@+id/iv_toolbar_cart"
-            android:background="@drawable/selector_cart"
+            android:background="@drawable/selector_toolbar_cart"
             style="@style/ToolbarImageView"/>
 
         <TextView
