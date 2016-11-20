@@ -2,16 +2,31 @@
 <LinearLayout
     android:id="@+id/activity_commodity_detail"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tcl="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.tcl.lishanwang.oneshop.activity.CommodityInfoActivity"
-    xmlns:tcl="http://schemas.android.com/apk/res-auto">
+    tools:context="com.tcl.lishanwang.oneshop.activity.CommodityInfoActivity">
 
     <com.tcl.lishanwang.oneshop.view.GeneralToolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tcl:title = "Idol 4S Phone Case"
-        tcl:isRightImgShow="true"/>
+        tcl:isRightImgShow="true"
+        tcl:title="Idol 4S Phone Case"/>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tl_commodity_info"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        app:tabBackground="@color/colorWhite"
+        app:tabSelectedTextColor="@color/colorAccent"
+        app:tabTextAppearance="@style/ServiceMenuTitleText"
+        app:tabTextColor="@color/colorDarkGray"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_commodity_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>
