@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".activity.CommodityListActivity">
         </activity>
+        <activity android:name=".activity.CommodityInfoActivity">
+        </activity>
     </application>
 
 </manifest>

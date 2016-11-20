@@ -22,7 +22,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.tcl.lishanwang.oneshop.R;
-import com.tcl.lishanwang.oneshop.adapter.CommodityAdapter;
+import com.tcl.lishanwang.oneshop.adapter.CommodityListAdapter;
 import com.tcl.lishanwang.oneshop.utils.UIUtils;
 
 import butterknife.BindView;
@@ -76,7 +76,7 @@ public class CommodityListActivity extends AppCompatActivity {
         mRgSortFilter.check(R.id.rb_recommend);
         mRgSortFilter.setOnCheckedChangeListener(mOnCheckedChangeListener);
         mRvCommodity.setLayoutManager(new LinearLayoutManager(this));
-        mRvCommodity.setAdapter(new CommodityAdapter());
+        mRvCommodity.setAdapter(new CommodityListAdapter());
     }
 
     @OnClick({R.id.rb_price_ranking, R.id.iv_filter, R.id.iv_show_style})
