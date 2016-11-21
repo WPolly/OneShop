@@ -29,4 +29,7 @@
     <string name="spacial_sales">Spacial sales</string>
     <string name="accessories">Accessories</string>
     <string name="get_coupon">Get coupon</string>
+    <string name="share">Share</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="buy_now">Buy now</string>
 </resources>
