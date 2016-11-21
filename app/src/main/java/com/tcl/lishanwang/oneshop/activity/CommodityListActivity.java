@@ -108,7 +108,7 @@ public class CommodityListActivity extends AppCompatActivity {
     }
 
     private void openDropMenu() {
-        mRvCommodity.setLayoutFrozen(true);
+        mVShadowBehind.setVisibility(View.VISIBLE);
         ViewGroup.LayoutParams ivFilterLp = mIvFilter.getLayoutParams();
         mOriginIvFilterHeight = ivFilterLp.height;
         ivFilterLp.height = mOriginIvFilterHeight + UIUtils.dip2Px(1);
@@ -179,6 +179,7 @@ public class CommodityListActivity extends AppCompatActivity {
         public void onAnimationEnd(Animator animation) {
             ViewGroup.LayoutParams ivFilterLp = mIvFilter.getLayoutParams();
             ivFilterLp.height = mOriginIvFilterHeight;
+            mVShadowBehind.setVisibility(View.GONE);
         }
     };
 

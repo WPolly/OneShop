@@ -171,7 +171,9 @@
             android:id="@+id/v_shadow_behind"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/ll_filter_drop_menu"/>
+            android:layout_below="@+id/ll_filter_drop_menu"
+            android:clickable="true"
+            android:visibility="gone"/>
     </RelativeLayout>
 
 </LinearLayout>
