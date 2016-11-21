@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v4.view.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:background="@color/colorWhite"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:orientation="vertical"
+            android:paddingBottom="18dp"
+            android:paddingEnd="15dp"
+            android:paddingStart="15dp"
+            android:paddingTop="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I idol 4S 5.5 inch Unlocked Smartphone"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                android:layout_marginTop="12dp"
+                android:text="$ 35.54"
+                android:textColor="@color/colorRed"
+                android:textSize="16sp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDivideLine"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="18dp"
+                android:text="Chose colors"
+                android:textSize="14sp"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:layout_width="103dp"
+                    android:layout_height="33dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/selector_bg_chose_colors"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="Black"
+                    android:textColor="@drawable/selector_text_color_chose_colors"
+                    android:textSize="14sp"/>
+
+                <RadioButton
+                    android:layout_width="103dp"
+                    android:layout_height="33dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/selector_bg_chose_colors"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="White"
+                    android:textColor="@drawable/selector_text_color_chose_colors"
+                    android:textSize="14sp"/>
+
+                <RadioButton
+                    android:layout_width="103dp"
+                    android:layout_height="33dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/selector_bg_chose_colors"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="Champagne"
+                    android:textColor="@drawable/selector_text_color_chose_colors"
+                    android:textSize="14sp"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <include layout="@layout/divider_line_bold"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:orientation="vertical"
+            android:paddingStart="15dp">
+
+            <TextView
+                style="@style/GoodsTitleTextView"
+                android:text="Offer package"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <include layout="@layout/divider_line_bold"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:paddingEnd="15dp"
+            android:paddingStart="15dp">
+
+            <TextView
+                style="@style/GoodsTitleTextView"
+                android:text="Comments(513)"/>
+
+            <TextView
+                android:id="@+id/tv_favorable_rate"
+                style="@style/GoodsTitleTextView"
+                android:layout_alignParentEnd="true"
+                android:text="95%"
+                android:textColor="@color/colorRed"/>
+
+            <TextView
+                style="@style/GoodsTitleTextView"
+                android:layout_toStartOf="@id/tv_favorable_rate"
+                android:text="Favorable rate: "/>
+        </RelativeLayout>
+
+        <include layout="@layout/divider_line_bold"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:orientation="vertical"
+            android:paddingStart="15dp">
+
+            <TextView
+                style="@style/GoodsTitleTextView"
+                android:text="Customers who bought this also bought"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
