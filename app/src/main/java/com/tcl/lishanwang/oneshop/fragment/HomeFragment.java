@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -14,6 +13,7 @@ import android.widget.LinearLayout;
 import com.tcl.lishanwang.oneshop.R;
 import com.tcl.lishanwang.oneshop.adapter.HomeLoopingImgViewPagerAdapter;
 import com.tcl.lishanwang.oneshop.utils.UIUtils;
+import com.tcl.lishanwang.oneshop.view.AutoScrollViewPager;
 
 /**
  * Created by lishan on 2016/11/4.
@@ -24,14 +24,12 @@ public class HomeFragment extends Fragment {
 
     private int[] mImgIds =
             {R.mipmap.discovery_hot_topic, R.mipmap.discovery_hot_activity, R.mipmap.discovery_sweepstakes, R.mipmap.discovery_physical_store};
-    private ViewPager mVpHomeLoopingImg;
+    private AutoScrollViewPager mVpHomeLoopingImg;
     private LinearLayout mLLHomeLoopIndicator;
     private HomeLoopingImgViewPagerAdapter mHomeLoopingImgViewPagerAdapter;
-    private AutoScrollTask mAutoScrollTask;
 
     public static HomeFragment newInstance(int someInt) {
         HomeFragment myFragment = new HomeFragment();
-
         Bundle args = new Bundle();
         args.putInt("someInt", someInt);
         myFragment.setArguments(args);
@@ -48,7 +46,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        mVpHomeLoopingImg = (ViewPager) rootView.findViewById(R.id.vp_home_looping_img);
+        mVpHomeLoopingImg = (AutoScrollViewPager) rootView.findViewById(R.id.vp_home_looping_img);
         mLLHomeLoopIndicator = (LinearLayout) rootView.findViewById(R.id.ll_home_loop_indicator);
         return rootView;
     }
@@ -59,17 +57,12 @@ public class HomeFragment extends Fragment {
         mHomeLoopingImgViewPagerAdapter = new HomeLoopingImgViewPagerAdapter(mImgIds);
         mVpHomeLoopingImg.setAdapter(mHomeLoopingImgViewPagerAdapter);
         mVpHomeLoopingImg.addOnPageChangeListener(mOnPageChangeListener);
-        mVpHomeLoopingImg.setOnTouchListener(mVpOnTouchListener);
-        mVpHomeLoopingImg.setCurrentItem(determineCurrentPosition());
-        refreshLoopIndicator(0);
-        mAutoScrollTask = new AutoScrollTask();
-        mAutoScrollTask.startScroll();
     }
 
-    private int determineCurrentPosition() {
-        int currentPosition = mHomeLoopingImgViewPagerAdapter.getCount() / 2;
-        while (currentPosition % mImgIds.length != 0) currentPosition++;
-        return currentPosition;
+    @Override
+    public void onStart() {
+        super.onStart();
+        mVpHomeLoopingImg.startScroll(mImgIds.length);
     }
 
     private void refreshLoopIndicator(int index) {
@@ -95,60 +88,15 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        mAutoScrollTask.stopScroll();
+    public void onStop() {
+        super.onStop();
+        mVpHomeLoopingImg.stopScroll();
     }
 
-    private class AutoScrollTask implements Runnable {
-
-        void startScroll() {
-            UIUtils.postTaskDelay(this, 3000);
-        }
-
-        void stopScroll() {
-            UIUtils.removeTask(this);
-        }
-
-        @Override
-        public void run() {
-            mVpHomeLoopingImg.setCurrentItem(mVpHomeLoopingImg.getCurrentItem() + 1);
-            startScroll();
-        }
-    }
-
-    private ViewPager.OnPageChangeListener mOnPageChangeListener = new ViewPager.OnPageChangeListener() {
-        @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-        }
-
+    private ViewPager.SimpleOnPageChangeListener mOnPageChangeListener = new ViewPager.SimpleOnPageChangeListener() {
         @Override
         public void onPageSelected(int position) {
             refreshLoopIndicator(position % mImgIds.length);
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int state) {
-
-        }
-    };
-
-    private View.OnTouchListener mVpOnTouchListener = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            switch (motionEvent.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    mAutoScrollTask.stopScroll();
-                    break;
-                case MotionEvent.ACTION_UP:
-                    mAutoScrollTask.startScroll();
-                    break;
-                case MotionEvent.ACTION_CANCEL:
-                    mAutoScrollTask.startScroll();
-                    break;
-            }
-            return false;
         }
     };
 }
