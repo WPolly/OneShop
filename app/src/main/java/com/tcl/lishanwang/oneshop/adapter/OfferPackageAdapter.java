@@ -1,6 +1,11 @@
 package com.tcl.lishanwang.oneshop.adapter;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +27,15 @@ public class OfferPackageAdapter extends RecyclerView.Adapter<OfferPackageViewHo
 
     @Override
     public void onBindViewHolder(OfferPackageViewHolder holder, int position) {
-
+        String text = "Add $" + position + " to buy";
+        int index = text.indexOf('t');
+        Spannable span = new SpannableString(text);
+        span.setSpan(new ForegroundColorSpan(Color.RED), 4, index, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        holder.mTvPriceItemOfferPackage.setText(span);
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return 20;
     }
 }
