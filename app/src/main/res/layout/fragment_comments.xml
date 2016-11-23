@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl_comments_filter_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:paddingTop="18dp"
+        android:paddingBottom="18dp">
+
+        <TextView
+            android:id="@+id/tv_comments_title_favorable_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:textSize="12sp"
+            android:text="@string/favorable_rate"/>
+
+        <TextView
+            android:id="@+id/tv_comments_favorable_rate_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_comments_title_favorable_rate"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:text="95%"
+            android:textSize="30sp"
+            android:textColor="#FFB006"/>
+
+        <CheckedTextView
+            android:id="@+id/ctv_comments_all"
+            android:layout_toEndOf="@id/tv_comments_title_favorable_rate"
+            android:text="All(513)"
+            style="@style/CommentsFilterCheckedTextView"/>
+
+        <CheckedTextView
+            android:id="@+id/ctv_comments_image"
+            android:layout_toEndOf="@id/ctv_comments_all"
+            android:text="Image(20)"
+            style="@style/CommentsFilterCheckedTextView"/>
+
+        <CheckedTextView
+            android:id="@+id/ctv_comments_good"
+            android:layout_toEndOf="@id/ctv_comments_image"
+            android:text="Good(480)"
+            style="@style/CommentsFilterCheckedTextView"/>
+
+        <CheckedTextView
+            android:id="@+id/ctv_comments_average"
+            android:layout_toEndOf="@id/tv_comments_title_favorable_rate"
+            android:layout_below="@id/ctv_comments_all"
+            android:layout_marginTop="10dp"
+            android:text="Average(20)"
+            style="@style/CommentsFilterCheckedTextView"/>
+
+        <CheckedTextView
+            android:id="@+id/ctv_comments_bad"
+            android:layout_toEndOf="@id/ctv_comments_average"
+            android:layout_below="@id/ctv_comments_all"
+            android:layout_marginTop="10dp"
+            android:text="Bad(13)"
+            style="@style/CommentsFilterCheckedTextView"/>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.tcl.lishanwang.oneshop.fragment.CommentsFragment;
 import com.tcl.lishanwang.oneshop.fragment.GoodsFragment;
 
 /**
@@ -21,6 +22,7 @@ public class CommodityInfoViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        if (position == 3) return new CommentsFragment();
         return new GoodsFragment();
     }
 

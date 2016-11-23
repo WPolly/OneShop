@@ -32,4 +32,5 @@
     <string name="share">Share</string>
     <string name="add_to_cart">Add to cart</string>
     <string name="buy_now">Buy now</string>
+    <string name="favorable_rate">Favorable rate</string>
 </resources>
