@@ -4,4 +4,13 @@
         <attr name="isRightImgShow" format="boolean"/>
         <attr name="title" format="string"/>
     </declare-styleable>
+
+    <declare-styleable name="StarRatingBar">
+        <attr name="starPadding" format="dimension"/>
+        <attr name="starCount" format="integer"/>
+        <attr name="starSize" format="dimension"/>
+        <attr name="starEmptyDrawable" format="reference"/>
+        <attr name="starFullDrawable" format="reference"/>
+        <attr name="rating" format="float"/>
+    </declare-styleable>
 </resources>
