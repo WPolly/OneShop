@@ -86,8 +86,10 @@ public class CommodityListActivity extends AppCompatActivity {
                 changePriceRankingOrder();
                 break;
             case R.id.iv_filter:
-                int tempHeight = mLlFilterDropMenu.getMeasuredHeight();
-                if (tempHeight != 0) mOriginDropMenuHeight = tempHeight;
+                if (mOriginDropMenuHeight == 0) {
+                    int tempHeight = mLlFilterDropMenu.getMeasuredHeight();
+                    if (tempHeight != 0) mOriginDropMenuHeight = tempHeight;
+                }
                 initDropMenuAnimator();
                 toggleDropMenu();
                 break;
