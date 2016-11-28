@@ -86,7 +86,7 @@ public class CommodityListActivity extends AppCompatActivity {
                 changePriceRankingOrder();
                 break;
             case R.id.iv_filter:
-                if (mOriginDropMenuHeight == 0) {
+                if (mOriginDropMenuHeight == 0) { // if 判断很重要
                     int tempHeight = mLlFilterDropMenu.getMeasuredHeight();
                     if (tempHeight != 0) mOriginDropMenuHeight = tempHeight;
                 }
@@ -112,7 +112,7 @@ public class CommodityListActivity extends AppCompatActivity {
     private void openDropMenu() {
         mVShadowBehind.setVisibility(View.VISIBLE);
         ViewGroup.LayoutParams ivFilterLp = mIvFilter.getLayoutParams();
-        mOriginIvFilterHeight = ivFilterLp.height;
+        if(mOriginIvFilterHeight == 0) mOriginIvFilterHeight = ivFilterLp.height; // if 判断很重要
         ivFilterLp.height = mOriginIvFilterHeight + UIUtils.dip2Px(1);
         mIvFilter.setImageResource(R.drawable.product_btn_screen_pre);
         mDropMenuAnimator.removeListener(mAnimatorListenerAdapter);
@@ -120,7 +120,6 @@ public class CommodityListActivity extends AppCompatActivity {
     }
 
     private void closeDropMenu() {
-        mRvCommodity.setLayoutFrozen(false);
         mIvFilter.setImageResource(R.drawable.product_btn_screen_nor);
         mDropMenuAnimator.addListener(mAnimatorListenerAdapter);
         mDropMenuAnimator.reverse();

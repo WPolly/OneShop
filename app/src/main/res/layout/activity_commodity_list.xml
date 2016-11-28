@@ -68,8 +68,7 @@
             android:id="@+id/space_show_style"
             android:layout_width="1dp"
             android:layout_height="46dp"
-            android:layout_toStartOf="@id/iv_show_style"
-            android:background="@color/colorBackground"/>
+            android:layout_toStartOf="@id/iv_show_style"/>
 
         <ImageView
             android:id="@+id/iv_filter"
