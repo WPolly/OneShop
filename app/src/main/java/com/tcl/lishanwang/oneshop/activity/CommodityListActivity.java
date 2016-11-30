@@ -130,7 +130,6 @@ public class CommodityListActivity extends AppCompatActivity {
         mDropMenuAnimator.setDuration(200);
         mDropMenuAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
         mDropMenuAnimator.addUpdateListener(mAnimatorUpdateListener);
-        mDropMenuAnimator.addListener(mAnimatorListenerAdapter);
     }
 
     private void changePriceRankingOrder() {
@@ -185,6 +184,9 @@ public class CommodityListActivity extends AppCompatActivity {
     };
 
     private ValueAnimator.AnimatorUpdateListener mAnimatorUpdateListener = new ValueAnimator.AnimatorUpdateListener() {
+
+        private ArgbEvaluator mArgbEvaluator;
+
         @Override
         public void onAnimationUpdate(ValueAnimator valueAnimator) {
             mLlFilterDropMenu.setVisibility(View.VISIBLE);
@@ -196,8 +198,8 @@ public class CommodityListActivity extends AppCompatActivity {
             float fraction = animatedValue / 500f;
             int startColor = Color.parseColor("#00000000");
             int endColor = Color.parseColor("#66000000");
-            ArgbEvaluator argbEvaluator = new ArgbEvaluator();
-            int evaluateColor = (int) argbEvaluator.evaluate(fraction, startColor, endColor);
+            if (mArgbEvaluator == null) mArgbEvaluator = new ArgbEvaluator();
+            int evaluateColor = (int) mArgbEvaluator.evaluate(fraction, startColor, endColor);
             mVShadowBehind.setBackgroundColor(evaluateColor);
         }
     };
