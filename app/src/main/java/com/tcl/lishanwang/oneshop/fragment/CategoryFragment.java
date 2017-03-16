@@ -74,5 +74,5 @@ public class CategoryFragment extends Fragment {
                     break;
             }
         }
-    };;
+    };
 }
