@@ -24,6 +24,8 @@
         </activity>
         <activity android:name=".activity.CommodityInfoActivity">
         </activity>
+        <activity android:name=".activity.VoiceMailActivity">
+        </activity>
     </application>
 
 </manifest>

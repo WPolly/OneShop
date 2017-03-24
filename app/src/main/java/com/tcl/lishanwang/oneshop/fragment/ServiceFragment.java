@@ -1,5 +1,6 @@
 package com.tcl.lishanwang.oneshop.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import com.tcl.lishanwang.oneshop.R;
 import com.tcl.lishanwang.oneshop.activity.LoginActivity;
+import com.tcl.lishanwang.oneshop.activity.VoiceMailActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -77,16 +79,18 @@ public class ServiceFragment extends Fragment {
 
     @OnClick({R.id.civ_user_profile, R.id.ll_user_profile_container, R.id.tv_all_orders, R.id.ll_to_pay, R.id.imageView, R.id.ll_to_receive, R.id.ll_to_comment, R.id.ll_returns, R.id.ll_favorite, R.id.ll_coupons, R.id.ll_others, R.id.ll_service_site, R.id.ll_usual_question, R.id.ll_contact_us, R.id.ll_feedback})
     public void onClick(View view) {
+        Intent intent  = new Intent();
+        Class<? extends Activity> cls = null;
         switch (view.getId()) {
             case R.id.civ_user_profile:
                 break;
             case R.id.ll_user_profile_container:
-                Intent intent  = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
+                cls = LoginActivity.class;
                 break;
             case R.id.tv_all_orders:
                 break;
             case R.id.ll_to_pay:
+                cls = VoiceMailActivity.class;
                 break;
             case R.id.imageView:
                 break;
@@ -110,6 +114,10 @@ public class ServiceFragment extends Fragment {
                 break;
             case R.id.ll_feedback:
                 break;
+        }
+        if (cls != null) {
+            intent.setClass(getActivity(), cls);
+            startActivity(intent);
         }
     }
 }
