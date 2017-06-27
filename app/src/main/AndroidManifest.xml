@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".activity.VoiceMailActivity">
         </activity>
+        <activity android:name=".activity.TranslucentToolbarActivity">
+        </activity>
     </application>
 
 </manifest>

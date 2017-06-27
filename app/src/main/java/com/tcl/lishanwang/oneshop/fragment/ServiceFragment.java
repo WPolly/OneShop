@@ -8,12 +8,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tcl.lishanwang.oneshop.R;
 import com.tcl.lishanwang.oneshop.activity.LoginActivity;
+import com.tcl.lishanwang.oneshop.activity.TranslucentToolbarActivity;
 import com.tcl.lishanwang.oneshop.activity.VoiceMailActivity;
 
 import butterknife.BindView;
@@ -36,8 +36,6 @@ public class ServiceFragment extends Fragment {
     TextView mTvAllOrders;
     @BindView(R.id.ll_to_pay)
     LinearLayout mLlToPay;
-    @BindView(R.id.imageView)
-    ImageView mImageView;
     @BindView(R.id.ll_to_receive)
     LinearLayout mLlToReceive;
     @BindView(R.id.ll_to_comment)
@@ -77,7 +75,7 @@ public class ServiceFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
     }
 
-    @OnClick({R.id.civ_user_profile, R.id.ll_user_profile_container, R.id.tv_all_orders, R.id.ll_to_pay, R.id.imageView, R.id.ll_to_receive, R.id.ll_to_comment, R.id.ll_returns, R.id.ll_favorite, R.id.ll_coupons, R.id.ll_others, R.id.ll_service_site, R.id.ll_usual_question, R.id.ll_contact_us, R.id.ll_feedback})
+    @OnClick({R.id.civ_user_profile, R.id.ll_user_profile_container, R.id.tv_all_orders, R.id.ll_to_pay, R.id.ll_to_receive, R.id.ll_to_comment, R.id.ll_returns, R.id.ll_favorite, R.id.ll_coupons, R.id.ll_others, R.id.ll_service_site, R.id.ll_usual_question, R.id.ll_contact_us, R.id.ll_feedback})
     public void onClick(View view) {
         Intent intent  = new Intent();
         Class<? extends Activity> cls = null;
@@ -92,9 +90,8 @@ public class ServiceFragment extends Fragment {
             case R.id.ll_to_pay:
                 cls = VoiceMailActivity.class;
                 break;
-            case R.id.imageView:
-                break;
             case R.id.ll_to_receive:
+                cls = TranslucentToolbarActivity.class;
                 break;
             case R.id.ll_to_comment:
                 break;

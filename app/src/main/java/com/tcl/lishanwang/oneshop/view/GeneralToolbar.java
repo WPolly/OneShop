@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +17,7 @@ import com.tcl.lishanwang.oneshop.R;
  * 10:38
  */
 
-public class GeneralToolbar extends Toolbar implements View.OnClickListener {
+public class GeneralToolbar extends FrameLayout implements View.OnClickListener {
 
     public GeneralToolbar(Context context) {
         this(context, null, 0);
